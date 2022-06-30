@@ -12,11 +12,11 @@ sudo curl -fL https://docs.luxonis.com/install_dependencies.sh | bash
 # depthai build ------------
 cd ${SCRIPT_DIR}/depthai-core/
 git submodule update --init --recursive
-cmake -S. -Bbuild
+cmake -S. -Bbuild -D'CMAKE_INSTALL_PREFIX=../depthai-core-lib/'
 cmake --build build --target install -j$(nproc)
 
 # remove depthai-src (optional)
-ls $(pwd) | grep -v -E 'build' | xargs rm -rf
+# ls $(pwd) | grep -v -E 'build' | xargs rm -rf
 cd ${SCRIPT_DIR}
 
 # build target -----
